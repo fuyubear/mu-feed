@@ -77,7 +77,7 @@ function collectSeriesData(list){
         chapterStr = "c."+release.chapter
         return{
           title: release.series+" "+volumeStr+chapterStr,
-          description: "["+release.grouphtml+"] "+release.serieshtml+" "+volumeStr+chapterStr,
+          description: "by "+ release.grouphtml.text(),
           date: release.date,
           link: release.serieslink,
           guid: release.seriesid+":"+release.groupid+":"+volumeStr+chapterStr,
