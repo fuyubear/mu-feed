@@ -21,7 +21,7 @@ function collectListData(id, list) {
         entries.each((_, tr) => {
           const tds = $(tr).children();
           seriesList.push({
-            id: parse(tds.eq(0).children('a').attr('href'),true).query.id,
+            id: parse(tds.eq(0).children('a').attr('href'), true).query.id,
             series: tds.eq(0).text(),
             status: tds.eq(1).text()
           });
@@ -46,17 +46,17 @@ function getSeriesData(id) {
           release.push(txt)
           if (release.length >= 5) {
             releases.push({
-              date: new Date(release[0].text()).toISOString(),
+              date: new Date(release[0].text()).toUTCString(),
               series: release[1].text(),
               volume: release[2].text(),
               chapter: release[3].text(),
               group: release[4].text(),
-              seriesid: parse(release[1].children('a').attr('href'),true).query.id,
-              groupid: parse(release[4].children('a').attr('href'),true).query.id,
+              seriesid: parse(release[1].children('a').attr('href'), true).query.id,
+              groupid: parse(release[4].children('a').attr('href'), true).query.id,
               serieshtml: release[1].html(),
               grouphtml: release[4].html(),
               serieslink: release[1].children('a').attr('href'),
-              grouplink:release[4].children('a').attr('href'),
+              grouplink: release[4].children('a').attr('href'),
             });
             release = []
           }
@@ -67,34 +67,37 @@ function getSeriesData(id) {
   }))
 }
 
-function collectSeriesData(list){
+function collectSeriesData(list) {
   const errs = []
   return Promise.all(list.map(data => {
-    return new Promise(resolve => setTimeout(resolve,100))
+    return new Promise(resolve => setTimeout(resolve, 100))
       .then(_ => getSeriesData(data.id))
       .then(releaseData => releaseData.map(release => {
-        volumeStr = release.volume.length > 0 ? "v."+release.volume+" ":""
-        chapterStr = "c."+release.chapter
-        return{
-          title: release.series+" "+volumeStr+chapterStr,
+        volumeStr = release.volume.length > 0 ? "v." + release.volume + " " : ""
+        chapterStr = "c." + release.chapter
+        return {
+          title: release.series + " " + volumeStr + chapterStr,
           description: "by " + release.group,
           date: release.date,
           link: release.serieslink,
-          guid: release.seriesid+":"+release.groupid+":"+volumeStr+chapterStr,
+          guid: { 
+            $: { isPermaLink: "false" },
+            _: release.seriesid + ":" + release.groupid + ":" + volumeStr + chapterStr,
+          },
         }
       }))
       .catch(err => {
-        console.log("ERR",err)
+        console.log("ERR", err)
         errs.push(err)
         return []
       })
   }))
-  .then(releases => {
-    console.log("ERRS",errs.length)
-    return Promise.resolve(releases.flat(1).sort((a,b)=> {
-      return new Date(a.date) <= new Date(b.date)?1:-1
-    }))
-  })
+    .then(releases => {
+      console.log("ERRS", errs.length)
+      return Promise.resolve(releases.flat(1).sort((a, b) => {
+        return new Date(a.date) <= new Date(b.date) ? 1 : -1
+      }))
+    })
 }
 
 function generateRSS(res, releases) {
