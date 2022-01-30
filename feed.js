@@ -82,7 +82,7 @@ function collectSeriesData(list) {
           link: release.serieslink,
           guid: { 
             $: { isPermaLink: "false" },
-            _: release.seriesid + ":" + release.groupid + ":" + volumeStr + chapterStr,
+            _: release.seriesid + ":" + release.groupid + ":" + volumeStr + chapterStr + ":" + release.date,
           },
         }
       }))
