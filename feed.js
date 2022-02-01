@@ -46,7 +46,7 @@ function getSeriesData(id) {
           release.push(txt)
           if (release.length >= 5) {
             releases.push({
-              date: new Date(release[0].text()).toUTCString(),
+              date: release[0].text(),
               series: release[1].text(),
               volume: release[2].text(),
               chapter: release[3].text(),
@@ -78,11 +78,11 @@ function collectSeriesData(list) {
         return {
           title: release.series + " " + volumeStr + chapterStr,
           description: "by " + release.group,
-          date: release.date,
+          date: new Date(release.date).toUTCString(),
           link: release.serieslink,
           guid: { 
             $: { isPermaLink: "false" },
-            _: release.seriesid + ":" + release.groupid + ":" + volumeStr + chapterStr + ":" + release.date,
+            _: release.seriesid + ":" + release.groupid + ":" + volumeStr + chapterStr + ":" + new Date(release.date).getTime(),
           },
         }
       }))
