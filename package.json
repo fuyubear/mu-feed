@@ -2,7 +2,9 @@
   "main": "feed.js",
   "dependencies": {
     "cheerio": "1.0.0-rc.3",
-    "exponential-backoff": "^2.2.0",
+    "next": "^12.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "request": "2.88.0",
     "request-promise": "4.2.4",
     "xml2js": "0.4.19"

@@ -1,25 +1,23 @@
 ![](https://img.shields.io/github/license/mashape/apistatus.svg)
-[![](https://img.shields.io/badge/donate-patreon-orange.svg)](https://www.patreon.com/bePatron?c=954360)
-[![](https://img.shields.io/badge/donate-paypal-blue.svg)](https://paypal.me/TSedlar)
 
 # mu-feed
-A MangaUpdates RSS feed generator
+A MangaUpdates RSS feed generator. Originally created by [TSedlar](https://github.com/TSedlar). 
 
-You can self-host this on [now.sh](https://now.sh) with very little knowledge and use this to generate RSS feeds for [MangaUpdates](https://www.mangaupdates.com/)
+You can self-host this on [Vercel](https://vercel.com) with very little knowledge and use this to generate RSS feeds for [MangaUpdates](https://www.mangaupdates.com/)
 
 ## Setup
 
-To use it, you should make their list public.
+To use it, you should make a list (of all the manga you want to track) public.
 
-The settings I use on my reading list are below:
+The settings you can use on the desired list are below:
 
 ![](https://i.imgur.com/mpURglK.png)
 
-You will then be able to see your public list URL, for example, mine is: 
+You will then be able to see your public list URL, which should look something like this: 
 
 `https://www.mangaupdates.com/mylist.html?id=542166&list=read`
 
-Take note of the `?id=xxxx&list=xxxx` part for later
+Take note of the `?id=xxxx&list=xxxx` part for later.
 
 ## Instructions
 
@@ -27,7 +25,7 @@ Go to import a repository, as seen below:
 
 ![](https://i.imgur.com/suxe0Yy.png)
 
-Use the following url during import: `https://github.com/TSedlar/mu-feed.git`
+Use the following url during import: `https://github.com/fuyubear/mu-feed.git`
 
 Fill in the form and press `Begin import`
 
@@ -35,21 +33,15 @@ Fill in the form and press `Begin import`
 
 ## Registering
 
-Head on over to [now.sh](https://now.sh) and get started with GitHub
+Head on over to [Vercel](https://vercel.com) and login with your GitHub account.
 
-![](https://i.imgur.com/RPFqKyh.png)
+Now you will want to go to your [Vercel dashboard](https://vercel.com/dashboard), and click New Project.
 
-![](https://i.imgur.com/pUOz1LJ.png)
-
-Now you will want to go to your [now.sh account](https://zeit.co/account), and install Now for GitHub.
-
-Select the repository you imported and click next/install:
-
-![](https://i.imgur.com/oDndsh6.png)
+Select the repository you imported. Do not fill out any fields. Then click Deploy.
 
 Now go to your [GitHub repositories](https://github.com/settings/repositories) and locate the repository you imported.
 
-Click the `Create File` button
+Click the `Create File` button.
 
 ![](https://i.imgur.com/EFoKcL3.png)
 
@@ -60,12 +52,10 @@ Type `BUILD` or anything you want in the field it highlights and click `Commit n
 
 ## Finishing up
 
-Now you will have the project imported to your [now.sh project](https://zeit.co/dashboard/projects)
+Your newly deployed project should now appear in the [Vercel dashboard](https://vercel.com/dashboard).
 
-Click the project and locate the URLs
+Click the project and locate the URLs (they are the Domains).
 
-![](https://i.imgur.com/mXuSN29.png)
+Refer to the above section for your `id` and `list`.
 
-Refer to the above section for your `id` and `list`
-
-You can now obtain your MangaUpdates RSS feed file at `https://mu-feed.<username>.now.sh/feed.js?id=xxxxxx&list=xxxx`
+You can now obtain your MangaUpdates RSS feed file at `https://mu-feed-<username>.vercel.app/api/feed?id=xxxxxx&list=xxxx`
