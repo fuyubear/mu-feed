@@ -27,7 +27,7 @@ Go to import a repository, as seen below:
 
 Use the following url during import: `https://github.com/fuyubear/mu-feed.git`
 
-Fill in the form and press `Begin import`
+Fill in the form and press `Begin import`.
 
 ![](https://i.imgur.com/Buv6CXP.png)
 
@@ -37,7 +37,7 @@ Head on over to [Vercel](https://vercel.com) and login with your GitHub account.
 
 Now you will want to go to your [Vercel dashboard](https://vercel.com/dashboard), and click New Project.
 
-Select the repository you imported. Do not fill out any fields. Then click Deploy.
+Select the repository you imported. Do not fill out any fields, then click Deploy.
 
 Now go to your [GitHub repositories](https://github.com/settings/repositories) and locate the repository you imported.
 
