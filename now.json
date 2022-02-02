@@ -1,7 +1,0 @@
-{
-    "name": "mu-feed",
-    "version": 2,
-    "builds": [
-        {"src": "feed.js", "use": "@now/node" }
-    ]
-  }
