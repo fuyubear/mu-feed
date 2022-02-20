@@ -19,8 +19,7 @@ function collectListData(id, list) {
         entries.each((_, tr) => {
           const tds = $(tr).children();
           seriesList.push({
-            series: tds.eq(0).text(),
-            // status: tds.eq(1).text()
+            seriesUrl: tds.eq(0).children().attr('href'),
           });
         });
         resolve(seriesList);
@@ -39,7 +38,7 @@ function generateRSS(res, seriesList) {
           } else {
             const items = result.rss.channel[0].item;
             result.rss.channel[0].item = items.filter(item =>
-              seriesList.filter(i => item.title[0].includes(i.series)).length > 0
+              seriesList.filter(i => item.link[0].includes(i.seriesUrl)).length > 0
             );
 
             res.setHeader('Content-Type', 'text/xml');
