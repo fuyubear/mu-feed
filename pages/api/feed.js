@@ -37,9 +37,11 @@ function generateRSS(res, seriesList) {
             reject(err);
           } else {
             const items = result.rss.channel[0].item;
-            result.rss.channel[0].item = items.filter(item =>
-              seriesList.filter(i => item.link[0].includes(i.seriesUrl)).length > 0
-            );
+            result.rss.channel[0].item = items.filter(function(item) {
+              if (typeof item.link !== 'undefined') {
+                return this.filter(i => item.link[0].includes(i.seriesUrl)).length > 0;
+              }
+            }, seriesList);
 
             res.setHeader('Content-Type', 'text/xml');
             resolve(js2xml.buildObject(result));
