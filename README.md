@@ -1,9 +1,11 @@
 ![](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 # mu-feed
-A MangaUpdates RSS feed generator using Next.js. Originally created by [TSedlar](https://github.com/TSedlar).
+A MangaUpdates RSS filter using Next.js. Originally created by [TSedlar](https://github.com/TSedlar), this fork has a fix that matches series based on their series ID instead of their title.
 
-You can self-host this on [Vercel](https://vercel.com) with very little knowledge and use this to generate RSS feeds for [MangaUpdates](https://www.mangaupdates.com/).
+This takes the existing [MangaUpdates RSS feed](https://www.mangaupdates.com/rss.php) and filters the RSS to only show specific series from a user list.
+
+You can self-host this on [Vercel](https://vercel.com) with very little knowledge.
 
 ## Easy Setup Guide
 
